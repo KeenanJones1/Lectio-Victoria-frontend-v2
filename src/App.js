@@ -2,6 +2,8 @@ import './App.css';
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import Layout from './components/layout'
+import Home from './pages/home'
+import Landing from './pages/landing'
 
 function App() {
 
@@ -16,13 +18,11 @@ function App() {
 
   return (
     <Router>
-      <Layout>
         <Switch>
-          <Route />
-          <Route />
-          <Route />
+          <Route exact path="/landing" component={Landing}/>
+          <Route exact path="/home" component={Home}/>
+          {/* <Route exact path=""/> */}
         </Switch>
-      </Layout>
     </Router>
   );
 }

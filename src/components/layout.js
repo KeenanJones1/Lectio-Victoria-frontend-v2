@@ -1,10 +1,12 @@
 import React from 'react'
+import Navbar from './navbar'
 
-const layout = () => {
+const layout = (props) => {
  return (
-  <h1>
-   Layout
-  </h1>
+  <>
+   <Navbar />
+   {props.children}
+  </>
  )
 }
 
