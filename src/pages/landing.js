@@ -1,10 +1,12 @@
 import React from 'react'
+import Layout from '../components/layout'
+import Signup from '../components/signup'
 
 const landing = () => {
  return (
-  <>
-   
-  </>
+  <Layout className="static-wrapper">
+   <Signup />
+  </Layout>
  )
 }
 
