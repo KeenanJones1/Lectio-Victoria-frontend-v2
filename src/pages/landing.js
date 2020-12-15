@@ -1,11 +1,11 @@
 import React from 'react'
 import Layout from '../components/layout'
-import Signup from '../components/signup'
+import Intro from '../components/intro'
 
-const landing = () => {
+const landing = (props) => {
  return (
   <Layout className="static-wrapper">
-   <Signup />
+   <Intro routeProps={props}/>
   </Layout>
  )
 }
