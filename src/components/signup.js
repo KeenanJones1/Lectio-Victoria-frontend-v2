@@ -80,7 +80,6 @@ handleSubmit(event) {
     this.props.routeProps.routeProps.history.push('/home')
    }
   })
-
      let user = {};
      user["name"] = "";
      user["email"] = "";
