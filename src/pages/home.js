@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
+import CurrentlyReading from '../components/currentlyReading'
 
 class home extends React.Component{
   constructor(){
@@ -19,31 +20,35 @@ class home extends React.Component{
     fetch('http://localhost:3000/myuser', reqObj)
     .then(resp => resp.json())
     .then(data => this.setState({
-      readingLists: [data.reading_lists],
+      readingLists: data.reading_lists,
       user: {username: data.username, email: data.email}}))
+  }
+
+  getCurr = () => {
+    let curr = this.state.readingLists.find(list => list.name === "Currently Reading")
+    return curr
   }
 
 
 
 
 
+
+
   render(){
-    console.log(this.state)
     return (
      <Layout>
-      <div className="container">
+      <main className="container">
         <div className="row">
-          <div className="col-12 col-sm">
-            Col 1
-          </div>
-          <div className="col-12 col-sm">
+          <CurrentlyReading currList= {this.getCurr()}/>
+          <div className="col-6" id="homePrimaryColumn">
             Col 2
           </div>
-          <div className="col-12 col-sm">
+          <div className="col-3 col-lg" id="homeTertiaryColumn">
             Col 3
           </div>
         </div>
-      </div>
+      </main>
      </Layout>
     )
   }
