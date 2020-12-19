@@ -25,15 +25,23 @@ class currentlyReading extends Component {
   })
  }
 
+ handleSubmit = (event) => {
+  event.preventDefault();
+
+   fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookSearch}`)
+   .then(resp => resp.json())
+   .then(data => console.log(data))
+   .catch(err => console.log(err))
+ }
+
  render() {
   return (
    <div className="col-3" id="homeSecondaryColumn">
     <h5>Currently Reading</h5>
-
     <div className="my-3">What are you reading?
      <form action="">
       <input type="text" onChange={(e) => this.handleSearch(e)} value={this.state.bookSearch}/>
-      <input type="submit" name="" id="" />
+      <input type="submit" name="" id=""onClick={(event) => this.handleSubmit(event)} />
      </form>
     </div>
     {/* {this.props.currList !== 'undefined' ? this.renderList() : null} */}
