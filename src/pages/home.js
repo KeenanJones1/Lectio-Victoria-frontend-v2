@@ -1,13 +1,15 @@
 import React from 'react'
 import Layout from '../components/layout'
 import CurrentlyReading from '../components/currentlyReading'
+import Books from '../components/Books'
 
 class home extends React.Component{
   constructor(){
     super()
     this.state= {
     readingLists: [],
-    user: {}
+    user: {},
+    bookList: [],
     }
   }
 
@@ -25,8 +27,18 @@ class home extends React.Component{
   }
 
   getCurr = () => {
+    if(this.state.readingLists){
     let curr = this.state.readingLists.find(list => list.name === "Currently Reading")
     return curr
+    }
+    
+  }
+
+  setBooks = (books) => {
+    console.log(books);
+    this.setState({
+      bookList: books
+    })
   }
 
 
@@ -39,13 +51,13 @@ class home extends React.Component{
     return (
      <Layout>
       <main className="container">
-        <div className="row">
-          <CurrentlyReading currList= {this.getCurr()}/>
+        <div className="row m-3">
+          <CurrentlyReading currList= {this.getCurr()} setBooks={(books) => this.setBooks(books)} />
           <div className="col-6" id="homePrimaryColumn">
-            Col 2
+            {this.state.bookList.length > 0 ? <Books books={this.state.bookList} setOpen={this.props.setOpen}/> : null}
           </div>
           <div className="col-3 col-lg" id="homeTertiaryColumn">
-            Col 3
+            Show readingLists and ReadingList Books here
           </div>
         </div>
       </main>

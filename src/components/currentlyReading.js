@@ -15,7 +15,7 @@ class currentlyReading extends Component {
   if(this.props.currList){
    let bookList = this.props.currList.reading_list_books.map(ele => ele.book)
 
-  return bookList.map(book => <p>Are you still reading {book.title}?</p>)
+  return bookList.map(book => <p key={book.id}>Are you still reading {book.title}?</p>)
   }
  }
 
@@ -27,10 +27,9 @@ class currentlyReading extends Component {
 
  handleSubmit = (event) => {
   event.preventDefault();
-
    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.bookSearch}`)
    .then(resp => resp.json())
-   .then(data => console.log(data))
+   .then(data =>this.props.setBooks(data.items))
    .catch(err => console.log(err))
  }
 
@@ -46,7 +45,6 @@ class currentlyReading extends Component {
     </div>
     {/* {this.props.currList !== 'undefined' ? this.renderList() : null} */}
     {this.renderList()}
-
    </div>
   )
  }
