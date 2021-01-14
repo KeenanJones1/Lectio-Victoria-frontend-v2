@@ -7,7 +7,7 @@ const ModalContainer = styled.div`
  left: 0;
  right: 0;
  bottom: 0;
- background: rgba(0, 0, 0, 0.3);
+ background: rgba(0, 0, 0, 0.6);
  display: flex; 
  align-items: center; 
  justify-content: center;
@@ -34,7 +34,8 @@ const Modal = (props) => {
 
  const {title, authors, publishedDate, description} = props.book.volumeInfo
  const {imageLinks} = props.book.volumeInfo
- console.log();
+
+ console.log(props);
 
  return (
   <ModalContainer >

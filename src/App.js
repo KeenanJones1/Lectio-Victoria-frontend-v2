@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import Layout from './components/layout'
 import Home from './pages/home'
 import Landing from './pages/landing'
 import Modal from './components/Modal'
+import ReadingList from './pages/readingList'
+
 
 class App extends React.Component{
   constructor(){
@@ -38,6 +39,7 @@ class App extends React.Component{
           <Switch>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/home" render={() => <Home setOpen={this.setOpen}/>} />
+            <Route exact path="/list" render={() => <ReadingList/>} />
             {/* route to show list */}
             {/* route to show book */}
             {/* <Route exact path=""/> */}

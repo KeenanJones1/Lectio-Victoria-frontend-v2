@@ -2,6 +2,7 @@ import React from 'react'
 import Layout from '../components/layout'
 import CurrentlyReading from '../components/currentlyReading'
 import Books from '../components/Books'
+import ReadingLists from '../components/ReadingLists'
 
 class home extends React.Component{
   constructor(){
@@ -46,7 +47,6 @@ class home extends React.Component{
 
 
 
-
   render(){
     return (
      <Layout>
@@ -58,6 +58,7 @@ class home extends React.Component{
           </div>
           <div className="col-3 col-lg" id="homeTertiaryColumn">
             Show readingLists and ReadingList Books here
+            <ReadingLists readingLists={this.state.readingLists}/>
           </div>
         </div>
       </main>
