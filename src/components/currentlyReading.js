@@ -31,11 +31,12 @@ class currentlyReading extends Component {
    .then(resp => resp.json())
    .then(data =>this.props.setBooks(data.items))
    .catch(err => console.log(err))
- }
+  console.log(this.state.books);
+  }
 
  render() {
   return (
-   <div className="col-3" id="homeSecondaryColumn">
+   <div className="col-3 mr-5" id="homeSecondaryColumn">
     <h5>Currently Reading</h5>
     <div className="my-3">What are you reading?
      <form action="">

@@ -7,12 +7,12 @@ const Book = (props) => {
   props.setOpen(book)
  }
 
- const {imageLinks} = props.book.volumeInfo
-// debugger
+ const {imageLinks} = props.book
+
  return (
   <div className="col book my-2" onClick={(book) => handleBook(props.book)}>
-   <h5 className="book-title">{props.book.volumeInfo.title}</h5>
-   <p>By { props.book.volumeInfo.authors && props.book.volumeInfo.authors.length > 0 ? props.book.volumeInfo.authors.join('& ') : props.book.volumeInfo.authors }</p>
+   <h5 className="book-title">{props.book.title}</h5>
+   <p>By { props.book.authors && props.book.authors.length > 0 ? props.book.authors.join('& ') : props.book.authors }</p>
    {imageLinks ? <img src={imageLinks.thumbnail} className="book-img"/> : <p>No image avaiable</p>}
   </div>
  )

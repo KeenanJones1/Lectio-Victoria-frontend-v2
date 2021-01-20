@@ -39,14 +39,13 @@ class App extends React.Component{
     .then( resp => resp.json())
     .then( data => console.log(data) )
   }
-
   render(){
     return (
       <Router>
           <Switch>
             <Route exact path="/" component={Landing}/>
             <Route exact path="/home" render={() => <Home setOpen={this.setOpen} setLists={this.setLists}/>} />
-            <Route exact path="/list" render={() => <ReadingList/>} />
+            <Route exact path="/list/:id" render={(props) => <ReadingList routerProps={props}/>} />
             {/* route to show list */}
             {/* route to show book */}
             {/* <Route exact path=""/> */}

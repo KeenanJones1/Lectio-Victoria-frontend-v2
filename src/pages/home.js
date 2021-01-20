@@ -25,7 +25,6 @@ class home extends React.Component{
     .then(data => {this.setState({
       readingLists: data.reading_lists,
       user: {username: data.username, email: data.email}})
-
       this.props.setLists(data.reading_lists)}
       )
   }
@@ -39,7 +38,6 @@ class home extends React.Component{
   }
 
   setBooks = (books) => {
-    console.log(books);
     this.setState({
       bookList: books
     })
@@ -48,17 +46,17 @@ class home extends React.Component{
 
 
 
-
-
   render(){
     return (
      <Layout>
       <main className="container">
-        <div className="row m-3">
+        <div className="row m-2">
           <CurrentlyReading currList= {this.getCurr()} setBooks={(books) => this.setBooks(books)} />
+
           <div className="col-6" id="homePrimaryColumn">
             {this.state.bookList.length > 0 ? <Books books={this.state.bookList} setOpen={this.props.setOpen}/> : null}
           </div>
+
           <div className="col-3 col-lg" id="homeTertiaryColumn">
             Show readingLists and ReadingList Books here
             <ReadingLists readingLists={this.state.readingLists}/>

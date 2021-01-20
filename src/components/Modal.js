@@ -40,6 +40,7 @@ const Modal = (props) => {
 
  const renderLists = () => {
    return <select className="" onChange={(event) => setSelectedList(event.target.value)} name="" id="" >
+     <option>Please select a list</option>
      {props.readingLists.map(list => <option key={list.id} value={list.id}>{list.name}</option>)}
    </select>
 }
