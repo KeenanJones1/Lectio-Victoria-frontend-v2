@@ -12,7 +12,8 @@ class App extends React.Component{
     super()
     this.state={
       modalOpen: false,
-      modalBook: {}
+      modalBook: {}, 
+      readingLists: []
     }
   }
 
@@ -22,6 +23,12 @@ class App extends React.Component{
       modalOpen: !prevState.modalOpen,
       modalBook: book
     }
+    })
+  }
+
+  setLists = (lists) => {
+    this.setState({
+      readingLists: lists
     })
   }
   // 'http://localhost:3000/reading_list'
@@ -38,13 +45,13 @@ class App extends React.Component{
       <Router>
           <Switch>
             <Route exact path="/" component={Landing}/>
-            <Route exact path="/home" render={() => <Home setOpen={this.setOpen}/>} />
+            <Route exact path="/home" render={() => <Home setOpen={this.setOpen} setLists={this.setLists}/>} />
             <Route exact path="/list" render={() => <ReadingList/>} />
             {/* route to show list */}
             {/* route to show book */}
             {/* <Route exact path=""/> */}
           </Switch>
-          { this.state.modalOpen ? <Modal book={this.state.modalBook} open={this.state.modalOpen} setOpen={this.setOpen} /> : null}
+          { this.state.modalOpen ? <Modal book={this.state.modalBook} open={this.state.modalOpen} setOpen={this.setOpen}  readingLists={this.state.readingLists}/> : null}
       </Router>
     );
   }

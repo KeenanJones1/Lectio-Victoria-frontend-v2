@@ -22,9 +22,12 @@ class home extends React.Component{
     }
     fetch('http://localhost:3000/myuser', reqObj)
     .then(resp => resp.json())
-    .then(data => this.setState({
+    .then(data => {this.setState({
       readingLists: data.reading_lists,
-      user: {username: data.username, email: data.email}}))
+      user: {username: data.username, email: data.email}})
+
+      this.props.setLists(data.reading_lists)}
+      )
   }
 
   getCurr = () => {
