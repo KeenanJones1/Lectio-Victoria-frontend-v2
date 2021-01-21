@@ -40,6 +40,7 @@ class App extends React.Component{
     .then( data => console.log(data) )
   }
   render(){
+console.log(this.state)
     return (
       <Router>
           <Switch>

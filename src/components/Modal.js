@@ -34,8 +34,8 @@ const Modal = (props) => {
   props.setOpen()
  }
 
- const {title, authors, publishedDate, description} = props.book.volumeInfo
- const {imageLinks} = props.book.volumeInfo
+ const {title, authors, publishedDate, description} = props.book
+ const {imageLinks} = props.book
 
 
  const renderLists = () => {
@@ -45,13 +45,12 @@ const Modal = (props) => {
    </select>
 }
 
-
+console.log(props)
  return (
   <ModalContainer >
    <div className="container">
     <div className="row">
      <div className="col-8 mx-auto col-md-6 col-lg-4 text-center text-captialize p-5">
-
        <div className="book-info">
         <h3>{title}</h3>
         <h5>{authors.length ? authors.join(' & ') : authors}</h5>
