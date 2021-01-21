@@ -24,7 +24,11 @@ class readingList extends Component {
  }
 
  renderBooks = () => {
-  return this.state.readingBooks.map( book => <ReadingBooks listID={this.state.listInfo.id} book={book.book}/>)
+  return this.state.readingBooks.map( book => <ReadingBooks listID={this.state.listInfo.id} book={book.book} updateBooks={this.updateBooks}/>)
+ }
+
+ updateBooks = (booksArr) => {
+  this.setState({readingBooks: booksArr})
  }
 
 

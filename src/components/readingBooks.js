@@ -13,7 +13,9 @@ const IconButton = styled.button`
 `
 
 
-const readingBooks = ({book, listID}) => {
+const readingBooks = (props) => {
+
+ const {book, listID} = props
 
  const removeFromList = () => {
   const token = localStorage.getItem('token');
@@ -25,8 +27,9 @@ const readingBooks = ({book, listID}) => {
 
    fetch(`http://localhost:3000/book/${book.id}`, reqObj)
    .then(resp => resp.json())
-   .then(data => console.log(data))
+   .then(data => props.updateBooks(data.reading_list_books))
  }
+
 
  return (
   <Book className="col">
