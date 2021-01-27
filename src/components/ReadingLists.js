@@ -1,10 +1,11 @@
 import React from 'react'
 import ReadingList from './ReadingList'
 
-const ReadingLists = (props) => {
+const ReadingLists = ({readingLists}) => {
+ console.log(readingLists);
  return (
   <div>
-   { props.readingLists.map( list => <ReadingList key={list.id} list={list}/>)}
+   {readingLists.map( list => <ReadingList key={list.id} list={list}/>)}
   </div>
  )
 }

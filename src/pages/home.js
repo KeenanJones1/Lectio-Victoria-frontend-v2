@@ -3,14 +3,16 @@ import Layout from '../components/layout'
 import CurrentlyReading from '../components/currentlyReading'
 import Books from '../components/Books'
 import ReadingLists from '../components/ReadingLists'
+import Stats from '../components/Stats/Stats'
 
 class home extends React.Component{
   constructor(){
     super()
-    this.state= {
+    this.state={
     readingLists: [],
     user: {},
     bookList: [],
+    stats:[]
     }
   }
 
@@ -24,6 +26,7 @@ class home extends React.Component{
     .then(resp => resp.json())
     .then(data => {this.setState({
       readingLists: data.reading_lists,
+      stats: data.stats,
       user: {username: data.username, email: data.email}})
       this.props.setLists(data.reading_lists)}
       )
@@ -34,7 +37,6 @@ class home extends React.Component{
     let curr = this.state.readingLists.find(list => list.name === "Currently Reading")
     return curr
     }
-    
   }
 
   setBooks = (books) => {
@@ -47,6 +49,7 @@ class home extends React.Component{
 
 
   render(){
+    console.log(this.state);
     return (
      <Layout>
       <main className="container">
@@ -58,9 +61,12 @@ class home extends React.Component{
           </div>
 
           <div className="col-3 col-lg" id="homeTertiaryColumn">
-            Show readingLists and ReadingList Books here
             <ReadingLists readingLists={this.state.readingLists}/>
           </div>
+        </div>
+        
+        <div className="col">
+         { this.state.stats.length > 0 ? <Stats stats={this.state.stats} /> : <h4>Stats Loading...</h4>}
         </div>
       </main>
      </Layout>

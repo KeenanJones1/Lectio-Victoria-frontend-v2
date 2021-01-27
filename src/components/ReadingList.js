@@ -2,11 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 
-const ReadingList = (props) => {
+const ReadingList = ({list}) => {
 
  return (
-  <Link to={`list/${props.list.id}`}>
-   <p>{props.list.name}</p>
+  <Link to={`list/${list.id}`}>
+   <p>{list.name}</p>
   </Link>
  )
 }
