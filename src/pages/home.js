@@ -49,12 +49,11 @@ class home extends React.Component{
 
 
   render(){
-    console.log(this.state);
     return (
      <Layout>
       <main className="container">
         <div className="row m-2">
-          <CurrentlyReading currList= {this.getCurr()} setBooks={(books) => this.setBooks(books)} />
+          <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} />
 
           <div className="col-6" id="homePrimaryColumn">
             {this.state.bookList.length > 0 ? <Books books={this.state.bookList} setOpen={this.props.setOpen}/> : null}

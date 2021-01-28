@@ -33,7 +33,6 @@ class readingList extends Component {
 
 
  render() {
-     console.log(this.state.readingBooks[0]);
   return (
    <div className="container">
     <h1>{this.state.listInfo.name ? this.state.listInfo.name : "Please Wait" }</h1>

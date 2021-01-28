@@ -14,6 +14,8 @@ const Stat = ({stat}) => {
  )
 }
 
+// Figure out how to show the goal in the stat cotainer. 
+
 const StatContainer = styled.p`
  width: 0.1rem;
  margin: 0;

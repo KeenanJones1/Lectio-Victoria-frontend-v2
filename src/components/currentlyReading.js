@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+
 
 class currentlyReading extends Component {
  constructor(){
@@ -14,9 +18,26 @@ class currentlyReading extends Component {
  renderList = () => {
   if(this.props.currList){
    let bookList = this.props.currList.reading_list_books.map(ele => ele.book)
-
-  return bookList.map(book => <p key={book.id}>Are you still reading {book.title}?</p>)
+  return bookList.map(book => <div key={book.id}>
+    <p>Are you still reading {book.title}?
+     <IconButton onClick={() => this.finishReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
+       <FontAwesomeIcon icon={faCheck}/>
+     </IconButton>
+    </p>
+   </div>)
   }
+ }
+
+ finishReading = (id) => {
+  const token = localStorage.getItem('token')
+  let reqObj = {
+   method: "PATCH", 
+   headers: {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
+  }
+
+  fetch(`http://localhost:3000/book/${id}`, reqObj)
+  .then(resp => resp.json())
+  .then(data => console.log(data))
  }
 
  handleSearch = (e) => {
@@ -31,7 +52,6 @@ class currentlyReading extends Component {
    .then(resp => resp.json())
    .then(data =>this.props.setBooks(data.items))
    .catch(err => console.log(err))
-  console.log(this.state.books);
   }
 
  render() {
@@ -50,5 +70,10 @@ class currentlyReading extends Component {
   )
  }
 }
+
+
+const IconButton = styled.button`
+
+`
 
 export default currentlyReading;
