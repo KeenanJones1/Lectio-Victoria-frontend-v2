@@ -24,11 +24,7 @@ class home extends React.Component{
     }
     fetch('http://localhost:3000/myuser', reqObj)
     .then(resp => resp.json())
-    .then(data => {this.setState({
-      readingLists: data.reading_lists,
-      stats: data.stats,
-      user: {username: data.username, email: data.email}})
-      this.props.setLists(data.reading_lists)}
+    .then(data => this.updateInfo(data)
       )
   }
 
@@ -45,6 +41,14 @@ class home extends React.Component{
     })
   }
 
+  updateInfo = (data) => {
+    this.setState({
+      readingLists: data.reading_lists,
+      stats: data.stats,
+      user: {username: data.username, email: data.email}})
+      this.props.setLists(data.reading_lists)
+  }
+
 
 
 
@@ -53,7 +57,8 @@ class home extends React.Component{
      <Layout>
       <main className="container">
         <div className="row m-2">
-          <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} />
+          <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} updateInfo={this.updateInfo}
+          />
 
           <div className="col-6" id="homePrimaryColumn">
             {this.state.bookList.length > 0 ? <Books books={this.state.bookList} setOpen={this.props.setOpen}/> : null}

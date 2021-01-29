@@ -23,6 +23,10 @@ class currentlyReading extends Component {
      <IconButton onClick={() => this.finishReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
        <FontAwesomeIcon icon={faCheck}/>
      </IconButton>
+{/* Write a function to delete reading list book */}
+     <IconButton onClick={() => this.finishReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
+       <FontAwesomeIcon icon={faTimes}/>
+     </IconButton>
     </p>
    </div>)
   }
@@ -37,7 +41,7 @@ class currentlyReading extends Component {
 
   fetch(`http://localhost:3000/book/${id}`, reqObj)
   .then(resp => resp.json())
-  .then(data => console.log(data))
+  .then(data => this.props.updateInfo(data))
  }
 
  handleSearch = (e) => {
