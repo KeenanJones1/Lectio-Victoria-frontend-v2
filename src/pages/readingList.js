@@ -15,21 +15,21 @@ class readingList extends Component {
  componentDidMount(){
     const token = localStorage.getItem('token')
     const reqObj = {
-     method: 'GET',
-     headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}
- }
-  fetch(`http://localhost:3000/reading_list/${this.props.routerProps.match.params.id}`, reqObj)
-  .then( resp => resp.json())
-  .then( data => this.setState({readingBooks: data.reading_list_books, listInfo: {name: data.name, id: data.id}}))
+        method: 'GET',
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}}
+
+    fetch(`http://localhost:3000/reading_list/${this.props.routerProps.match.params.id}`, reqObj)
+    .then( resp => resp.json())
+    .then( data => this.setState({readingBooks: data.reading_list_books, listInfo: {name: data.name, id: data.id}}))
  }
 
- renderBooks = () => {
-  return this.state.readingBooks.map( book => <ReadingBooks listID={this.state.listInfo.id} book={book.book} updateBooks={this.updateBooks}/>)
- }
+    renderBooks = () => {
+    return this.state.readingBooks.map( book => <ReadingBooks listID={this.state.listInfo.id} book={book.book} updateBooks={this.updateBooks}/>)
+    }
 
- updateBooks = (booksArr) => {
-  this.setState({readingBooks: booksArr})
- }
+    updateBooks = (booksArr) => {
+    this.setState({readingBooks: booksArr})
+    }
 
 
  render() {

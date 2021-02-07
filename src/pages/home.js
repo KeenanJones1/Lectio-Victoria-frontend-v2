@@ -55,8 +55,15 @@ class home extends React.Component{
   render(){
     return (
      <Layout>
-      <main className="container">
-        <div className="row m-2">
+       <header className="container-fluid" id="header">
+        <div id="stats-headers">
+         { this.state.stats.length > 0 ? <Stats stats={this.state.stats} /> : <h4>Stats Loading...</h4>}
+        </div>
+       </header>
+
+
+      <main className="container-fluid">
+        <div className="row m-1">
           <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} updateInfo={this.updateInfo}
           />
 
@@ -67,10 +74,6 @@ class home extends React.Component{
           <div className="col-3 col-lg" id="homeTertiaryColumn">
             <ReadingLists readingLists={this.state.readingLists}/>
           </div>
-        </div>
-        
-        <div className="col">
-         { this.state.stats.length > 0 ? <Stats stats={this.state.stats} /> : <h4>Stats Loading...</h4>}
         </div>
       </main>
      </Layout>

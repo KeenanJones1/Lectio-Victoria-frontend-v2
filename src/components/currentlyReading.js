@@ -19,12 +19,12 @@ class currentlyReading extends Component {
   if(this.props.currList){
    let bookList = this.props.currList.reading_list_books.map(ele => ele.book)
   return bookList.map(book => <div key={book.id}>
-    <p>Are you still reading {book.title}?
+    <p className="h6">Have you finished reading {book.title}?
      <IconButton onClick={() => this.finishReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
        <FontAwesomeIcon icon={faCheck}/>
      </IconButton>
 {/* Write a function to delete reading list book */}
-     <IconButton onClick={() => this.finishReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
+     <IconButton onClick={() => this.removeFromReading(this.props.currList.reading_list_books[0].book_id, this.props.currList.reading_list_books[0].id )}>
        <FontAwesomeIcon icon={faTimes}/>
      </IconButton>
     </p>
@@ -43,6 +43,18 @@ class currentlyReading extends Component {
   .then(resp => resp.json())
   .then(data => this.props.updateInfo(data))
  }
+
+ removeFromReading = (id) => {
+  const token = localStorage.getItem('token')
+  let reqObj = {
+    method: "DELETE", 
+    headers: {"Content-Type": "application/json", "Authorization": `Bearer ${token}`}
+   }
+
+   fetch(`http://localhost:3000/book/${id}`, reqObj)
+  .then(resp => resp.json())
+  .then(data => this.props.updateInfo(data))
+}
 
  handleSearch = (e) => {
   this.setState({
@@ -77,7 +89,7 @@ class currentlyReading extends Component {
 
 
 const IconButton = styled.button`
-
+  margin: 0.4px 5px;
 `
 
 export default currentlyReading;
