@@ -89,7 +89,16 @@ class currentlyReading extends Component {
 
 
 const IconButton = styled.button`
-  margin: 0.4px 5px;
+  margin: 0.4px 2px;
+  font-size:0.9em;
+  border-radius: 25px;
+  color: white;
+  background-color: #503047;
+  border:solid 0.5px #503047;
+
+  &:hover{
+    background-color: #19535f;
+  }
 `
 
 export default currentlyReading;

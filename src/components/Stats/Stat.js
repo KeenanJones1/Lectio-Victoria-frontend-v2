@@ -5,7 +5,7 @@ import SkillBar from 'react-skillbars'
 const Stat = ({stat}) => {
  const skills = [
   {type: stat.name,
-   level: stat.value,
+   level: Math.round((stat.value / stat.goal) * 100),
    color: {
     "bar": "#3498db",
     "title": {
@@ -15,15 +15,14 @@ const Stat = ({stat}) => {
    }}
  ]
 
+
  return (
-  <StatContainer className="col-6">
+  <StatContainer className="col-4">
    <StatHeader>Level {stat.level}</StatHeader>
    <SkillBar skills={skills} animationDuration={500} height={15} />
   </StatContainer>
  )
 }
-
-// Figure out how to show the goal in the stat cotainer. 
 
 const StatContainer = styled.div`
  /* width: 0.1rem; */

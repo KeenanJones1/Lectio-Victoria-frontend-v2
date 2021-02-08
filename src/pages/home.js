@@ -4,6 +4,7 @@ import CurrentlyReading from '../components/currentlyReading'
 import Books from '../components/Books'
 import ReadingLists from '../components/ReadingLists'
 import Stats from '../components/Stats/Stats'
+import Design from '../components/Design'
 
 class home extends React.Component{
   constructor(){
@@ -56,13 +57,18 @@ class home extends React.Component{
     return (
      <Layout>
        <header className="container-fluid" id="header">
-        <div id="stats-headers">
-         { this.state.stats.length > 0 ? <Stats stats={this.state.stats} /> : <h4>Stats Loading...</h4>}
+        <div className="row">
+          <div className="col-4">
+          <Design />
+          </div>
+          <div className="col-8" id="stats-headers">
+          { this.state.stats.length > 0 ? <Stats stats={this.state.stats} /> : <h4>Stats Loading...</h4>}
+          </div>
         </div>
        </header>
 
 
-      <main className="container-fluid">
+      <main className="container-fluid h-100">
         <div className="row m-1">
           <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} updateInfo={this.updateInfo}
           />

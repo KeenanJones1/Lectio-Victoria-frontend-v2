@@ -1,7 +1,14 @@
-/* .container{
-  padding: 0;
-  margin: 0;
-} */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@500&display=swap");
+
+:root {
+  --primary: #f0f9ff;
+  --secondary: #503047;
+  --teritary: #19535f;
+  --headerText: Lato;
+  --commonText: Roboto;
+}
 
 .nav-bar {
   margin-bottom: 2rem;
@@ -14,6 +21,11 @@ h1 {
   display: block;
   font-size: 2em;
   font-weight: bold;
+  font-family: var(--headerText);
+}
+
+p {
+  font-family: var(--commonText);
 }
 
 .strike {
