@@ -5,6 +5,7 @@ import Books from '../components/Books'
 import ReadingLists from '../components/ReadingLists'
 import Stats from '../components/Stats/Stats'
 import Design from '../components/Design'
+import {useHistory} from 'react-router-dom'
 
 class home extends React.Component{
   constructor(){
@@ -18,6 +19,7 @@ class home extends React.Component{
   }
 
   componentDidMount(){
+   if(localStorage.token){
     const token = localStorage.getItem('token')
     const reqObj = {
         method: 'GET',
@@ -27,7 +29,12 @@ class home extends React.Component{
     .then(resp => resp.json())
     .then(data => this.updateInfo(data)
       )
+    }else{
+      this.props.routerProps.history.push("/")
+    }
   }
+
+  // "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.Kl0FmyScNcgfYynnRXiI6tBR0dmCn0xXn0HZBnAM31Q"
 
   getCurr = () => {
     if(this.state.readingLists){

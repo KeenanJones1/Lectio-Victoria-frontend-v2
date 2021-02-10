@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Home from './pages/home'
 import Landing from './pages/landing'
 import Modal from './components/Modal'
@@ -31,24 +31,18 @@ class App extends React.Component{
       readingLists: lists
     })
   }
-  // 'http://localhost:3000/reading_list'
-  // 'http://localhost:3000/user/1'
 
-   fetchthis = () => {
-    fetch('http://localhost:3000/user/1')
-    .then( resp => resp.json())
-    .then( data => console.log(data) )
-  }
+
   render(){
     return (
       <Router>
           <Switch>
-            <Route exact path="/" component={Landing}/>
-            <Route exact path="/home" render={() => <Home setOpen={this.setOpen} setLists={this.setLists}/>} />
+            <Route exact path="/" render={() => localStorage.token ? <Home setOpen={this.setOpen} setLists={this.setLists}/> : <Landing />} />
+
+            <Route exact path="/home" render={(props) => <Home setOpen={this.setOpen} setLists={this.setLists} routerProps={props}/>} />
+
             <Route exact path="/list/:id" render={(props) => <ReadingList routerProps={props}/>} />
-            {/* route to show list */}
-            {/* route to show book */}
-            {/* <Route exact path=""/> */}
+
           </Switch>
           { this.state.modalOpen ? <Modal book={this.state.modalBook} open={this.state.modalOpen} setOpen={this.setOpen}  readingLists={this.state.readingLists}/> : null}
       </Router>
