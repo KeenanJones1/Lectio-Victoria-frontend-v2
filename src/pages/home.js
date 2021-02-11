@@ -75,7 +75,7 @@ class home extends React.Component{
        </header>
 
 
-      <main className="container-fluid h-100">
+      <main className="container-fluid h-100" id="home">
         <div className="row m-1">
           <CurrentlyReading currList={this.getCurr()} setBooks={(books) => this.setBooks(books)} updateInfo={this.updateInfo}
           />
