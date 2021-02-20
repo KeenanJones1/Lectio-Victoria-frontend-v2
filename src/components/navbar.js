@@ -12,7 +12,7 @@ const Navbar = () => {
   return menuOpen ? <div className="menu">
   <ul>
    <li><Link to="/home">Home</Link></li>
-   <li><Link>Lists</Link></li>
+   <li><Link to="/lists">Lists</Link></li>
    <li><Link>Whatever Else</Link></li>
   </ul>
  </div> : null

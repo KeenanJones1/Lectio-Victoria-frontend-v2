@@ -5,6 +5,7 @@ import Home from './pages/home'
 import Landing from './pages/landing'
 import Modal from './components/Modal'
 import ReadingList from './pages/readingList'
+import Lists from './pages/Lists'
 
 
 class App extends React.Component{
@@ -42,6 +43,8 @@ class App extends React.Component{
             <Route exact path="/home" render={(props) => <Home setOpen={this.setOpen} setLists={this.setLists} routerProps={props}/>} />
 
             <Route exact path="/list/:id" render={(props) => <ReadingList routerProps={props}/>} />
+
+            <Route exact path="/lists" render={(props) => <Lists routerProps={props}/>} />
 
           </Switch>
           { this.state.modalOpen ? <Modal book={this.state.modalBook} open={this.state.modalOpen} setOpen={this.setOpen}  readingLists={this.state.readingLists}/> : null}
